@@ -12,6 +12,5 @@
 ```changeOwner("player 1 address") // Change to Player 1 account ```
 
 ```reveal("1", "0x1700000000000000000000000000000000000000000000000000000000000000") // Player 1 Reveals choice ```
-<<<<<<< HEAD
 
 ```claimRewardK("1") // Rewards claimed ```
