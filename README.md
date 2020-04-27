@@ -1,5 +1,5 @@
 ## TakeShare
-truffle migrate --reset&nbsp;
+truffle migrate --reset\
 npm run
 
 ## How to Play
