@@ -230,7 +230,7 @@ contract TakeShareContract is owned, priced {
             //TAKE game Commission
             uint256 amount = _amount - games[gameNumber-1].registrationCost;
             require(address(this).balance >= amount);
-            _to.call(abi.encode(amount));
+            _to.call.value(amount);
             emit Transferred(gameNumber, _to, amount);
         }
     }
@@ -257,7 +257,7 @@ contract TakeShareContract is owned, priced {
                 emit ContractEarnings(gameNumber, commission, "GAME_ABANDONED");
             }
             //Bet amount can't be less than commission.
-            //Hence no -ve check is required
+            
             ethTransfer(gameNumber, player, game.bets[player].betAmount);
             return true;
         }
