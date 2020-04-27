@@ -230,7 +230,8 @@ contract TakeShareContract is owned, priced {
             //TAKE game Commission
             uint256 amount = _amount - games[gameNumber-1].registrationCost;
             require(address(this).balance >= amount);
-            _to.call.value(amount);
+            (bool success, ) = _to.call.value(amount)(" ");
+	    require(success, "Transfer failed.");
             emit Transferred(gameNumber, _to, amount);
         }
     }
@@ -276,7 +277,6 @@ contract TakeShareContract is owned, priced {
             reward = gameReward < totalBet ? gameReward : totalBet; //Min (X+Y, (100+K)*X/100)
             game.reward[player] = reward - commission;
             //Min (X+Y, (100+K)*X/100) can't be less than commision.
-            //Hence no -ve check is required
             contractEarnings = contractEarnings + (totalBet - game.reward[player]);
             emit ContractEarnings(gameNumber, (totalBet - game.reward[player]), "OPPONENT_DISQUALIFIED");
             ethTransfer(gameNumber, player, reward);
@@ -286,7 +286,6 @@ contract TakeShareContract is owned, priced {
             reward = (game.bets[player].betAmount + game.bets[opponent].betAmount) / 2;
             game.reward[player] = reward - commission;
             //(X+Y)/2 can't be less than commision.
-            //Hence no -ve check is required
             if ( game.claimedReward[opponent] ) {
                 uint256 gameEarnings = (totalBet - game.reward[player] - game.reward[opponent]);
                 contractEarnings = contractEarnings + gameEarnings;
@@ -309,7 +308,6 @@ contract TakeShareContract is owned, priced {
             reward = gameReward < totalBet ? gameReward : totalBet; 
             game.reward[player] = reward - commission;
             //Min (X+Y, (100+K)*X/100) can't be less than commision.
-            //Hence no -ve check is required
             if ( game.claimedReward[opponent] ) {
                 uint256 gameEarnings = (totalBet - game.reward[player] - game.reward[opponent]);
                 contractEarnings = contractEarnings + gameEarnings;
@@ -339,3 +337,4 @@ contract TakeShareContract is owned, priced {
     }
     //REWARD WITHDRAW ENDS
 }
+
