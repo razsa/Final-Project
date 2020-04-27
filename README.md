@@ -1,6 +1,7 @@
 ## TakeShare
 
 ## Getting Started
+truffle compile\
 truffle migrate --reset\
 npm run
 
