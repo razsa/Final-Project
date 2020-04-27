@@ -15,9 +15,3 @@
 <<<<<<< HEAD
 
 ```claimRewardK("1") // Rewards claimed ```
-||||||| merged common ancestors
-```claimRewardK("1") // Rewards claimed ```
-=======
-
-```claimRewardK("1") // Rewards claimed ```
->>>>>>> d182002f8a6a27f306b16474e820f15de4976795
