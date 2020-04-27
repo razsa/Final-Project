@@ -1,4 +1,6 @@
 ## TakeShare
+truffle migrate --reset
+npm run
 
 ## How to Play
 ```startGame("1", "0x1700000000000000000000000000000000000000000000000000000000000000") // Player 1 Starts ```
