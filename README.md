@@ -5,7 +5,7 @@ cd Final-Project && cd migrations && touch 2_deploy_contracts.js\
 paste ```var TakeShareContract = artifacts.require("./TakeShareContract.sol");                                      module.exports = function(deployer) {
          deployer.deploy(TakeShareContract);
     };``` into '2_deploy_contracts.js'\
-truffle migrate
+truffle migrate\
 truffle console
 
 ## How to Play
