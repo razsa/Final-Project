@@ -1,9 +1,12 @@
 ## TakeShare
 
 ## Getting Started
-truffle compile\
-truffle migrate --reset\
-npm run
+cd Final-Project && cd migrations && touch 2_deploy_contracts.js\
+paste ```var TakeShareContract = artifacts.require("./TakeShareContract.sol");                                      module.exports = function(deployer) {
+         deployer.deploy(TakeShareContract);
+    };``` into '2_deploy_contracts.js'\
+truffle migrate\
+truffle console
 
 ## How to Play
 ```startGame("1", "0x1700000000000000000000000000000000000000000000000000000000000000") // Player 1 Starts ```
