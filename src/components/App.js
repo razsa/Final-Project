@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Web3 from 'web3';
+import './App.css';
 
 class App extends Component {
 
@@ -10,7 +11,13 @@ class App extends Component {
       
       async loadBlockchainData() {
 	      const web3 = window.web3
+	      
 	      const accounts = await web3.eth.getAccounts()
+	      this.setState({ account: accounts[0] })
+	      
+	      const balance = await web3.eth.getBalance(this.state.account)
+	      this.setState({ balance })
+	      console.log(this.state.balance)
       }
       	
       async loadWeb3() {
@@ -26,7 +33,15 @@ class App extends Component {
         }
       }
      
-     render() {
+     constructor(props) {
+       super(props);
+       this.state = { 
+	 account: '',
+	 balance: '0'
+       }
+     }
+
+     render() {    
 	return ( 
 	 <div>
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
